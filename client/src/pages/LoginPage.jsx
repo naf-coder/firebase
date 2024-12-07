@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword } from "Firebase.jsx/auth";
 
-import { auth } from "../firebase";
+import { auth } from "../Firebase.jsx";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -21,7 +21,9 @@ function LoginPage() {
       })
       .catch((error) => {
         const errorCode = error.code;
+        console.log(errorCode);
         const errorMessage = error.message;
+        console.log(errorMessage);
         console.log("Error", error);
       });
   };

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { auth } from "../firebase";
+import { auth } from "../Firebase.jsx";
 import { doc, getDoc } from "firebase/firestore";
-import { db } from "../firebase";
+import { db } from "../Firebase.jsx";
 
 function Profile() {
   const [email, setEmail] = useState();

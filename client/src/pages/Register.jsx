@@ -8,7 +8,7 @@ import {
 import { FaGoogle } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { auth, db } from "../firebase";
+import { auth, db } from "../Firebase.jsx";
 
 function Register() {
   const [email, setEmail] = useState("");
