@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { doc, setDoc } from "firebase/firestore";
 import {
-  getAuth,
   createUserWithEmailAndPassword,
   signInWithPopup,
   GoogleAuthProvider,
