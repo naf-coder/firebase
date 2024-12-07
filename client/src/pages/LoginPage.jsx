@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
-import { signInWithEmailAndPassword } from "Firebase.jsx/auth";
-
-import { auth } from "../Firebase.jsx";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../Firebase";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
