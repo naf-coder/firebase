@@ -53,7 +53,7 @@ function LoginPage() {
         </div>
 
         <button className="p-2 bg-black text-white rounded-lg my-3">
-          <Link to={"/register"}>Sign up</Link>
+          <Link to={"/"}>Sign up</Link>
         </button>
       </div>
     </>

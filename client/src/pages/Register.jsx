@@ -16,11 +16,10 @@ function Register() {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-
   const navigate = useNavigate("");
+
   const handleRegister = async (e) => {
     e.preventDefault();
-
     if (password !== confirmPassword) {
       alert("Passwords do not match!");
       return;
@@ -36,6 +35,7 @@ function Register() {
         }).then(() => {
           navigate("/profile");
         });
+        alert("Registered Successfully");
       })
       .catch((error) => {
         console.error("Error", error);
