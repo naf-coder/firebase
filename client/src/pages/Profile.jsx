@@ -9,30 +9,43 @@ function Profile() {
 
   const fetchUser = async () => {
     const user = auth.currentUser;
-    const docRef = doc(db, "users", user?.email);
-    const docSnap = await getDoc(docRef);
+    if (user) {
+      const docRef = doc(db, "users", user.email);
+      const docSnap = await getDoc(docRef);
 
-    if (docSnap.exists()) {
-      console.log("Document data:", docSnap.data());
-      setName(docSnap.data().name);
-    } else {
-      // docSnap.data() will be undefined in this case
-      console.log("No such document!");
+      if (docSnap.exists()) {
+        console.log("Document data:", docSnap.data());
+        setName(docSnap.data().name);
+      } else {
+        console.log("No such document!");
+      }
     }
   };
 
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
-      setEmail(user?.email);
+      setEmail(user?.email || "Guest");
       fetchUser();
     });
   }, []);
+
   return (
-    <div className="min-w-screen min-h-screen bg-blue-200 flex items-center justify-center">
-      <div className="w-[50%] h-[20vh] border border-black flex flex-col justify-center items-center">
-        <div className="flex flex-col justify-center items-center w-full">
-          <p className="bg-pink-200 w-1/2 h-10 my-2 p-2">{name}</p>
-          <p className="bg-pink-200 w-1/2 h-10 my-2 p-2">{email}</p>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 p-5">
+      <div className="w-full max-w-md bg-white shadow-lg rounded-lg p-6">
+        <h2 className="text-2xl font-bold text-center text-gray-700 mb-6">
+          User Profile
+        </h2>
+        <div className="flex flex-col gap-4">
+          <div className="p-4 bg-blue-100 rounded-lg flex justify-between items-center">
+            <span className="text-gray-500 font-medium">Name:</span>
+            <span className="text-gray-700 font-semibold">{name || "N/A"}</span>
+          </div>
+          <div className="p-4 bg-blue-100 rounded-lg flex justify-between items-center">
+            <span className="text-gray-500 font-medium">Email:</span>
+            <span className="text-gray-700 font-semibold">
+              {email || "N/A"}
+            </span>
+          </div>
         </div>
       </div>
     </div>

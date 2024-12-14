@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -28,35 +28,46 @@ function LoginPage() {
   };
 
   return (
-    <>
-      <div className="min-w-screen min-h-screen bg-blue-200 flex flex-col items-center justify-center">
-        <div className="w-[50%] h-[40vh] border border-black flex flex-col justify-center items-center">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 p-5">
+      <div className="w-full max-w-md bg-white shadow-md rounded-lg p-8">
+        <h2 className="text-2xl font-bold text-center text-gray-700 mb-5">
+          Login
+        </h2>
+        <form onSubmit={handleLogin} className="flex flex-col">
           <input
             type="email"
-            placeholder="Enetr your Email"
-            className="w-1/2 my-2 p-2 rounded-lg"
+            placeholder="Enter your Email"
+            className="mb-4 p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring focus:ring-blue-300"
             onChange={(e) => setEmail(e.target.value)}
+            required
           />
           <input
             type="password"
-            placeholder="Create Password"
-            className="w-1/2 my-2 p-2 rounded-lg"
+            placeholder="Enter Password"
+            className="mb-4 p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring focus:ring-blue-300"
             onChange={(e) => setPassword(e.target.value)}
+            required
           />
           <button
-            className="p-2 bg-blue-800 text-white rounded-lg my-3"
             type="submit"
-            onClick={handleLogin}
+            className="w-full py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300"
           >
             Login
           </button>
+        </form>
+        <div className="mt-5 text-center">
+          <p className="text-gray-500">
+            Dont have an account?{" "}
+            <Link
+              to="/"
+              className="text-blue-500 underline hover:text-blue-600 transition"
+            >
+              Sign up
+            </Link>
+          </p>
         </div>
-
-        <button className="p-2 bg-black text-white rounded-lg my-3">
-          <Link to={"/"}>Sign up</Link>
-        </button>
       </div>
-    </>
+    </div>
   );
 }
 

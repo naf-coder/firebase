@@ -16,7 +16,7 @@ function Register() {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const navigate = useNavigate("");
+  const navigate = useNavigate();
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -63,57 +63,66 @@ function Register() {
   };
 
   return (
-    <div className="min-w-screen min-h-screen bg-blue-200 flex flex-col items-center justify-center">
+    <div className="min-w-screen min-h-screen bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 flex flex-col items-center justify-center p-5">
       <form
-        className="w-[50%] h-[50vh] border border-black flex flex-col justify-center items-center"
+        className="w-full max-w-md bg-white shadow-md rounded-lg p-8 flex flex-col"
         onSubmit={handleRegister}
       >
+        <h2 className="text-2xl font-bold text-center mb-5 text-gray-700">
+          Create an Account
+        </h2>
         <input
           type="text"
           placeholder="Enter your Name"
-          className="w-1/2 my-2 rounded-lg p-2"
+          className="w-full mb-4 rounded-lg p-3 border border-gray-300 focus:outline-none focus:ring focus:ring-blue-300"
           onChange={(e) => setName(e.target.value)}
           required
         />
         <input
           type="email"
           placeholder="Enter your Email"
-          className="w-1/2 my-2 rounded-lg p-2"
+          className="w-full mb-4 rounded-lg p-3 border border-gray-300 focus:outline-none focus:ring focus:ring-blue-300"
           onChange={(e) => setEmail(e.target.value)}
           required
         />
         <input
           type="password"
           placeholder="Create Password"
-          className="w-1/2 my-2 rounded-lg p-2"
+          className="w-full mb-4 rounded-lg p-3 border border-gray-300 focus:outline-none focus:ring focus:ring-blue-300"
           onChange={(e) => setPassword(e.target.value)}
           required
         />
         <input
           type="password"
           placeholder="Confirm Password"
-          className="w-1/2 my-2 rounded-lg p-2"
+          className="w-full mb-4 rounded-lg p-3 border border-gray-300 focus:outline-none focus:ring focus:ring-blue-300"
           onChange={(e) => setConfirmPassword(e.target.value)}
           required
         />
         <button
-          className="p-2 bg-blue-800 text-white rounded-lg my-3"
+          className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition duration-300"
           type="submit"
         >
-          Submit
+          Register
         </button>
       </form>
 
       <button
-        className="p-2 bg-blue-400 text-white my-3 rounded-lg flex justify-center items-center"
+        className="w-full max-w-md mt-4 bg-red-600 text-white py-3 rounded-lg flex items-center justify-center hover:bg-red-700 transition duration-300"
         onClick={handleGoogleSignin}
       >
         <FaGoogle className="mr-2" />
         <p>Sign Up With Google</p>
       </button>
 
-      <p className="text-white">
-        <Link to="/login">Login</Link>
+      <p className="text-white mt-5">
+        Already have an account?{" "}
+        <Link
+          to="/login"
+          className="underline text-blue-300 hover:text-blue-400"
+        >
+          Login
+        </Link>
       </p>
     </div>
   );
